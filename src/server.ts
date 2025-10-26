@@ -69,14 +69,14 @@ mongoose
         res.status(200).json({
           status: 'healthy',
           redis: redis.status,
-          mongo: mongoose.connection.readyState,
+          mongo: mongoose.connection.readyState
         })
       } else {
         // Respond with 503 (Service Unavailable) if dependencies are down
         res.status(503).json({
           status: 'unhealthy',
           redis: redis.status,
-          mongo: mongoose.connection.readyState,
+          mongo: mongoose.connection.readyState
         })
       }
     })
