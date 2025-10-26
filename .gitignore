@@ -1,0 +1,6 @@
+node_modules/
+.env.dev
+.env.prod
+dist/
+proxylist.txt
+src/test.ts

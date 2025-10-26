@@ -1,0 +1,52 @@
+{
+  "name": "amul-notify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "env:dev": "dotenv -e .env.dev --",
+    "env:prod": "dotenv -e .env.prod --",
+    "build": "bun run lint && tsc && tsc-alias",
+    "start": "bun run env:prod bun run dist/server.js",
+    "dev": "bun run env:dev bun run --watch src/server.ts",
+    "lint": "eslint . --ext .ts",
+    "prettier": "prettier --write .",
+    "seed:dev": "bun run env:dev bun run src/seeders/index.ts",
+    "seed:prod": "bun run env:prod bun run dist/seeders/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.1",
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^24.0.3",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.34.1"
+  },
+  "dependencies": {
+    "axios": "^1.10.0",
+    "axios-cookiejar-support": "^6.0.2",
+    "bull": "^4.16.5",
+    "chalk": "4.1.2",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.13",
+    "dotenv-cli": "^8.0.0",
+    "express": "^5.1.0",
+    "ioredis": "^5.6.1",
+    "mongoose": "^8.16.0",
+    "morgan": "^1.10.0",
+    "node-cron": "^4.1.0",
+    "telegraf": "^4.16.3",
+    "tough-cookie": "^5.1.2",
+    "tsc-alias": "^1.8.16",
+    "zod": "^3.25.67"
+  }
+}
