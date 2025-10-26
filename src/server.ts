@@ -59,6 +59,29 @@ mongoose
         })
     }
 
+    // --- NEW HEALTH CHECK ROUTE ---
+    // This route is used by UptimeRobot to keep the service alive.
+    app.get('/health', (req, res) => {
+      const redisHealthy = redis.status === 'ready'
+      const mongoHealthy = mongoose.connection.readyState === 1 // 1 = connected
+
+      if (redisHealthy && mongoHealthy) {
+        res.status(200).json({
+          status: 'healthy',
+          redis: redis.status,
+          mongo: mongoose.connection.readyState,
+        })
+      } else {
+        // Respond with 503 (Service Unavailable) if dependencies are down
+        res.status(503).json({
+          status: 'unhealthy',
+          redis: redis.status,
+          mongo: mongoose.connection.readyState,
+        })
+      }
+    })
+    // ------------------------------
+
     app.listen(env.PORT, () => {
       console.log(`Server is running on port ${env.PORT}`)
     })
