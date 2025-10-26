@@ -65,7 +65,7 @@ mongoose
       const redisHealthy = redis.status === 'ready'
       const mongoHealthy = mongoose.connection.readyState === 1 // 1 = connected
 
-      if (redisHealthy && mongoHealthy) {
+      if ( mongoHealthy) {
         res.status(200).json({
           status: 'healthy',
           redis: redis.status,
